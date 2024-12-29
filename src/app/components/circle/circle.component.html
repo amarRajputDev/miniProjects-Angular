@@ -1,0 +1,50 @@
+
+<div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+    <h1 class="text-2xl font-bold text-center mb-4">To-Do List</h1>
+  
+    <!-- Add Task Section -->
+    <div class="flex items-center gap-2 mb-4">
+      <input
+        type="text"
+        [(ngModel)]="newTask"
+        placeholder="Add a new task"
+        (keyup.enter)="addTask()"
+        class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+      />
+      <button
+        (click)="addTask()"
+        class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+      >
+        Add
+      </button>
+    </div>
+  
+    <!-- Task List -->
+    <ul>
+      <li
+        *ngFor="let task of tasks; let i = index"
+        class="flex items-center justify-between py-2 px-4 mb-2 bg-gray-100 rounded-lg shadow-sm"
+        [ngClass]="task.completed ? 'bg-green-200' : 'bg-gray-100'"
+      >
+        <span
+          [class.line-through]="task.completed"
+          [class.text-gray-500]="task.completed"
+          (click)="toggleTask(i)"
+          class="cursor-pointer"
+        >
+          {{ task.name }}
+        </span>
+        <span class="w-1/3 flex justify-between items-center">
+            <input type="checkbox" [(ngModel)]="task.completed" class="ml-5">
+            <button
+              (click)="deleteTask(i)"
+              class="px-3 py-1 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition"
+            >
+              Delete
+            </button>
+        </span>
+      
+      </li>
+    </ul>
+  </div>
+  

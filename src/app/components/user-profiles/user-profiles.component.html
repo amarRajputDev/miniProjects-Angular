@@ -1,0 +1,21 @@
+<section class="overflow-x-hidden">
+   @if (Users.length) {
+      <div class="grid w-screen h-[80%] border gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-10  ">
+      <section *ngFor="let user of Users" >
+      <app-instagram-post [user]="user"></app-instagram-post>
+   </section>
+   </div>
+   }
+   @else {
+      <div
+      class="flex justify-center items-center"
+      >
+         <app-lottie ></app-lottie>
+      </div>
+   }
+
+
+   
+   
+
+</section>
